@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import {
   Select,
   SelectContent,
@@ -12,33 +11,11 @@ import {
   SelectValue,
   SelectTrigger,
 } from "@/components/ui/select";
-
-const schema = yup.object({
-  name: yup.string().required("Please enter name!"),
-  email: yup
-    .string()
-    .email("Email is not valid")
-    .required("Please enter email!"),
-  role: yup.string().required("Please select role!"),
-
-  // Additional Fields based on selected role
-  admincode: yup.string().when("role", {
-    is: (val: string) => val === "admin",
-    then: (schema: any) => schema.required("Please provide admin code"),
-  }),
-  usercode: yup.string().when("role", {
-    is: (val: string) => val === "user",
-    then: (schema: any) => schema.required("Please provide user code"),
-  }),
-});
-
-type FormTypes = {
-  name: string;
-  email: string;
-  role: string;
-  admincode?: string;
-  usercode?: string;
-};
+import { FormSchema } from "@/schemas/schemas";
+import { FormTypes } from "@/types/types";
+import AnimatedFormElement from "@/components/AnimatedFormElement";
+import { motion } from "motion/react";
+import AnimatedFormErrorMessage from "@/components/AnimatedFormErrorMessage";
 
 const FormPage = () => {
   const {
@@ -48,7 +25,7 @@ const FormPage = () => {
     control,
     formState: { errors },
   } = useForm<FormTypes>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(FormSchema),
   });
 
   const onSubmit: SubmitHandler<FormTypes> = (data) => console.log(data);
@@ -66,53 +43,72 @@ const FormPage = () => {
       </div>
 
       <form className="w-10/12 flex gap-3 flex-col m-auto">
-        <Input placeholder="name" {...register("name")} />
-        <p className="text-red-500">{errors.name?.message}</p>
-
-        <Input type="email" placeholder="email" {...register("email")} />
-        <p className="text-red-500">{errors.email?.message}</p>
-
-        <Controller
-          control={control}
-          name="role"
-          render={({ field }) => (
-            <Select {...field} onValueChange={field.onChange}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="admin">Admin</SelectItem>
-                <SelectItem value="user">User</SelectItem>
-              </SelectContent>
-            </Select>
+        <AnimatedFormElement delay={0.1}>
+          <Input placeholder="name" {...register("name")} />
+          {errors.name?.message && (
+            <AnimatedFormErrorMessage message={errors.name?.message} />
           )}
-        />
+        </AnimatedFormElement>
 
-        <p className="text-red-500">{errors.role?.message}</p>
+        <AnimatedFormElement delay={0.2}>
+          <Input type="email" placeholder="email" {...register("email")} />
+          {errors.email?.message && (
+            <AnimatedFormErrorMessage message={errors.email?.message} />
+          )}
+        </AnimatedFormElement>
+
+        <AnimatedFormElement delay={0.3}>
+          <Controller
+            control={control}
+            name="role"
+            render={({ field }) => (
+              <Select {...field} onValueChange={field.onChange}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="admin">Admin</SelectItem>
+                  <SelectItem value="user">User</SelectItem>
+                </SelectContent>
+              </Select>
+            )}
+          />
+          {errors.role?.message && (
+            <AnimatedFormErrorMessage message={errors.role?.message} />
+          )}
+        </AnimatedFormElement>
 
         {selectRole === "admin" && (
-          <>
+          <AnimatedFormElement delay={0.1}>
             <Input
               type="admincode"
               placeholder="Admin Code"
               {...register("admincode")}
             />
-            <p className="text-red-500">{errors.admincode?.message}</p>
-          </>
+            {errors.admincode?.message && (
+              <AnimatedFormErrorMessage message={errors.admincode?.message} />
+            )}
+          </AnimatedFormElement>
         )}
 
         {selectRole === "user" && (
-          <>
+          <AnimatedFormElement delay={0.1}>
             <Input
               type="usercode"
               placeholder="User Code"
               {...register("usercode")}
             />
-            <p className="text-red-500">{errors.usercode?.message}</p>
-          </>
+            {errors.usercode?.message && (
+              <AnimatedFormErrorMessage message={errors.usercode?.message} />
+            )}
+          </AnimatedFormElement>
         )}
 
-        <Button type="submit"> Submit </Button>
+        <AnimatedFormElement delay={0.4}>
+          <Button type="submit" className="w-full">
+            Submit
+          </Button>
+        </AnimatedFormElement>
       </form>
     </div>
   );
