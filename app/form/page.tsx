@@ -61,7 +61,7 @@ const FormPage = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div>
-        <h1 className="mb-5 text-xl">Form values</h1>
+        <h1 className="mb-5 text-xl">Live Preview</h1>
         <pre>{JSON.stringify(watch(), null, 4)}</pre>
       </div>
 

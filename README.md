@@ -20,6 +20,13 @@
   - Nested object validation
   - Error handling and messaging
 
+### Rich Text Editor (e.g., TipTap, Lexical)
+- **Purpose:** Exploring advanced text editing capabilities within React.
+- **Focus Areas:**
+  - Basic formatting (bold, italics, etc.)
+  - Custom node integration
+  - Collaboration features (potential)
+
 ---
 
 ## 🧪 Previous Experiments
