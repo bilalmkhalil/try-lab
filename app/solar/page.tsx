@@ -24,6 +24,7 @@ import {
   Timer,
   ChevronUp,
   CheckCircle2,
+  Sparkles,
 } from 'lucide-react';
 
 // Theme definitions for the application
@@ -39,6 +40,8 @@ const themes = {
     accent: 'text-[#28AFB0]',
     highlight: 'text-[#E3B23C]',
     progressBg: 'from-[#28AFB0] to-[#19647E]',
+    chartColor: 'from-yellow-500/70 to-yellow-300/70',
+    statusBg: 'bg-gray-800/50',
   },
   forest: {
     id: 'forest',
@@ -51,18 +54,22 @@ const themes = {
     accent: 'text-[#99C1B9]',
     highlight: 'text-[#E3B23C]',
     progressBg: 'from-[#E3B23C] to-[#99C1B9]',
+    chartColor: 'from-yellow-500/70 to-yellow-300/70',
+    statusBg: 'bg-gray-800/50',
   },
   vibrant: {
     id: 'vibrant',
-    name: 'Vibrant',
-    icon: <SunMoon className="w-4 h-4" />,
-    bgGradient: 'from-[#16213E] via-[#0F3460] to-[#533483]',
-    cardBg: 'from-[#16213E] to-[#533483]/80',
-    textColor: 'text-white',
-    mutedText: 'text-[#E94560]/90',
-    accent: 'text-[#E94560]',
-    highlight: 'text-[#E94560]',
-    progressBg: 'from-[#E94560] to-[#533483]',
+    name: 'White',
+    icon: <Sparkles className="w-4 h-4" />,
+    bgGradient: 'from-white via-[#F8F9FA] to-[#E9ECEF]',
+    cardBg: 'from-white to-[#F8F9FA]',
+    textColor: 'text-[#22223B]',
+    mutedText: 'text-[#6C757D]',
+    accent: 'text-[#28AFB0]',
+    highlight: 'text-[#E3B23C]',
+    progressBg: 'from-[#28AFB0] to-[#E3B23C]',
+    chartColor: 'from-[#28AFB0]/80 to-[#E3B23C]/70',
+    statusBg: 'bg-[#F1F3F4]',
   }
 };
 
@@ -115,28 +122,44 @@ export default function SolarPage() {
       </div>
       
       <div className="flex flex-col max-w-7xl mx-auto relative">
-        {/* Enhanced header with theme switcher */}
+        {/* Enhanced header with theme switcher and updated title style */}
         <div className="flex justify-between items-center mb-6">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
             className="relative"
           >
-            <h1 className="text-3xl md:text-4xl font-bold relative z-10 pl-2">
-              <span className="inline-block relative">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C]">
-                  Solar System
-                </span>
-                <motion.span
-                  className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] rounded-full"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                />
-              </span>
-              <span className="ml-2 font-bold">Monitor</span>
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight relative z-10 pl-2 font-mono">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
+                <div className="relative">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] inline-block">
+                    SOLAR·SYNC
+                  </span>
+                  <motion.span
+                    className="absolute -bottom-1 left-0 right-0 h-1.5 bg-gradient-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] rounded-full"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                  />
+                  <div className="absolute -left-3 -top-3 w-6 h-6">
+                    <motion.span 
+                      className="absolute w-6 h-6 rounded-full bg-[#E3B23C]/30"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: [0, 1.2, 1] }}
+                      transition={{ delay: 0.8, duration: 0.5 }}
+                    />
+                    <motion.span 
+                      className="absolute w-3 h-3 left-1.5 top-1.5 rounded-full bg-[#E3B23C]"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: [0, 1.5, 1] }}
+                      transition={{ delay: 1, duration: 0.5 }}
+                    />
+                  </div>
+                </div>
+                <span className="text-sm md:text-lg uppercase tracking-widest opacity-75 font-light mt-0.5">Dashboard</span>
+              </div>
             </h1>
-            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-[#28AFB0] to-[#99C1B9] blur-xl opacity-50 z-0"></div>
+            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-[#28AFB0] to-[#99C1B9] blur-xl opacity-30 z-0"></div>
           </motion.div>
           
           <div className="flex gap-2">
@@ -146,8 +169,8 @@ export default function SolarPage() {
                 onClick={() => setActiveTheme(theme)}
                 className={`p-2 rounded-full transition-all ${
                   activeTheme.id === theme.id 
-                    ? 'bg-[#DDCECD]/20 shadow-lg' 
-                    : 'hover:bg-[#DDCECD]/10'
+                    ? `${activeTheme.id === 'vibrant' ? 'bg-gray-200 shadow-lg' : 'bg-[#DDCECD]/20 shadow-lg'}` 
+                    : `${activeTheme.id === 'vibrant' ? 'hover:bg-gray-200/50' : 'hover:bg-[#DDCECD]/10'}`
                 }`}
                 title={theme.name}
               >
@@ -176,12 +199,12 @@ export default function SolarPage() {
               {systemStatus.solarGeneration.toFixed(1)} <span className="text-xl text-[#DDCECD]/50">kW</span>
             </div>
             
-            <div className="flex justify-between items-center py-1.5 px-3 bg-gray-800/50 rounded-xl mb-2 text-sm">
+            <div className={`flex justify-between items-center py-1.5 px-3 ${activeTheme.statusBg} rounded-xl mb-2 text-sm`}>
               <span className={activeTheme.mutedText}>Daily Peak</span>
-              <span className="text-yellow-300 font-bold">{(systemStatus.solarGeneration * 1.5).toFixed(1)} kW</span>
+              <span className={`font-bold ${activeTheme.highlight}`}>{(systemStatus.solarGeneration * 1.5).toFixed(1)} kW</span>
             </div>
             
-            {/* Chart container with flex-grow to fill available space */}
+            {/* Chart container with theme-based colors */}
             <div className="flex-grow flex flex-col mt-1">
               <div className="flex-grow flex items-end">
                 <div className="w-full h-full flex items-end justify-between gap-0.5">
@@ -190,7 +213,7 @@ export default function SolarPage() {
                     return (
                       <motion.div 
                         key={i}
-                        className="bg-gradient-to-t from-yellow-500/70 to-yellow-300/70 rounded-t-sm"
+                        className={`bg-gradient-to-t ${activeTheme.chartColor} rounded-t-sm`}
                         style={{ height: `${height}%`, width: '6px' }}
                         initial={{ height: 0 }}
                         animate={{ height: `${height}%` }}
@@ -200,7 +223,7 @@ export default function SolarPage() {
                   })}
                 </div>
               </div>
-              <div className="text-[10px] text-gray-500 mt-1 flex justify-between">
+              <div className={`text-[10px] ${activeTheme.mutedText} mt-1 flex justify-between`}>
                 <span>00:00</span>
                 <span>12:00</span>
                 <span>23:59</span>
