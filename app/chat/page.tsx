@@ -164,6 +164,17 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:30:00Z",
       status: "seen",
+      reactions: [
+        {
+          emoji: "👍",
+          count: 2,
+          users: [
+            { id: "user_456", name: "Bob" },
+            { id: "user_789", name: "Charlie" },
+          ],
+        },
+        { emoji: "❤️", count: 1, users: [{ id: "user_456", name: "Bob" }] },
+      ],
     },
     {
       id: 2,
@@ -179,6 +190,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:31:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 3,
@@ -194,6 +206,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:32:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "🤔", count: 1, users: [{ id: "user_789", name: "Charlie" }] },
+      ],
     },
     {
       id: 4,
@@ -209,6 +224,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:33:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 5,
@@ -224,6 +240,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:34:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "🚀", count: 1, users: [{ id: "user_456", name: "Bob" }] },
+      ],
     },
     {
       id: 6,
@@ -239,6 +258,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:35:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 7,
@@ -254,6 +274,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:36:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 8,
@@ -269,6 +290,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:37:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "👏", count: 1, users: [{ id: "user_123", name: "Alice" }] },
+      ],
     },
     {
       id: 9,
@@ -284,6 +308,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:38:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 10,
@@ -299,6 +324,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:39:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "✅", count: 1, users: [{ id: "user_789", name: "Charlie" }] },
+      ],
     },
     {
       id: 11,
@@ -314,6 +342,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:40:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 12,
@@ -329,6 +358,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:41:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "💡", count: 1, users: [{ id: "user_456", name: "Bob" }] },
+      ],
     },
     {
       id: 13,
@@ -344,6 +376,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:42:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 14,
@@ -359,6 +392,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:43:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "🔒", count: 1, users: [{ id: "user_123", name: "Alice" }] },
+      ],
     },
     {
       id: 15,
@@ -374,6 +410,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:44:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 16,
@@ -389,6 +426,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:45:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "🧠", count: 1, users: [{ id: "user_123", name: "Alice" }] },
+      ],
     },
     {
       id: 17,
@@ -404,6 +444,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:46:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 18,
@@ -419,6 +460,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:47:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 19,
@@ -434,6 +476,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:48:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "🪝", count: 1, users: [{ id: "user_456", name: "Bob" }] },
+      ],
     },
     {
       id: 20,
@@ -449,6 +494,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:49:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 21,
@@ -464,6 +510,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:50:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 22,
@@ -479,6 +526,16 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:51:00Z",
       status: "seen",
+      reactions: [
+        {
+          emoji: "🚀",
+          count: 2,
+          users: [
+            { id: "user_123", name: "Alice" },
+            { id: "user_789", name: "Charlie" },
+          ],
+        },
+      ],
     },
     {
       id: 23,
@@ -494,6 +551,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:52:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 24,
@@ -509,6 +567,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:53:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "🛣️", count: 1, users: [{ id: "user_456", name: "Bob" }] },
+      ],
     },
     {
       id: 25,
@@ -524,6 +585,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:54:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 26,
@@ -539,6 +601,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:55:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "📦", count: 1, users: [{ id: "user_123", name: "Alice" }] },
+      ],
     },
     {
       id: 27,
@@ -554,6 +619,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:56:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 28,
@@ -569,6 +635,9 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:57:00Z",
       status: "seen",
+      reactions: [
+        { emoji: "⚠️", count: 1, users: [{ id: "user_456", name: "Bob" }] },
+      ],
     },
     {
       id: 29,
@@ -584,6 +653,7 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:58:00Z",
       status: "seen",
+      reactions: [],
     },
     {
       id: 30,
@@ -599,6 +669,16 @@ const Chat = () => {
       },
       timestamp: "2024-01-10T10:59:00Z",
       status: "delivered",
+      reactions: [
+        {
+          emoji: "✨",
+          count: 2,
+          users: [
+            { id: "user_123", name: "Alice" },
+            { id: "user_789", name: "Charlie" },
+          ],
+        },
+      ],
     },
   ];
 
@@ -638,10 +718,10 @@ const Chat = () => {
   };
 
   return (
-    <div className="bg-white h-screen">
+    <div className="bg-gray-100 h-screen">
       <div className="grid grid-cols-4">
         <div className="col-span-1 flex h-screen flex-col">
-          <div className="border border-gray-300 px-4 py-5 my-5 flex items-center rounded-xl ml-[15px] mr-[29px]">
+          <div className="border bg-white border-gray-300 px-4 py-6 my-4 flex items-center rounded-xl mx-4">
             <Search className=" text-gray-500" />
             <Input
               type="text"
@@ -650,11 +730,11 @@ const Chat = () => {
             />
           </div>
 
-          <motion.div className="flex flex-col gap-2 px-4 pt-4 overflow-y-scroll">
+          <motion.div className="flex flex-col gap-2 px-4 overflow-y-scroll no-scrollbar">
             {messages.map((message, index) => (
               <motion.div
                 key={index}
-                className="border border-gray-300 px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-xl"
+                className="border bg-white border-gray-300 px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-xl"
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
@@ -684,7 +764,7 @@ const Chat = () => {
         </div>
 
         <div className="col-span-3">
-          <div className="flex items-center gap-4 border border-gray-300 rounded-xl my-4 p-4 ml-[15px] mr-[29px]">
+          <div className="flex items-center gap-4 border bg-white border-gray-300 rounded-xl my-4 p-4 mx-4">
             <img
               src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
               alt="john"
@@ -693,15 +773,15 @@ const Chat = () => {
             <p className="font-bold text-xl">John Doe</p>
           </div>
 
-          <div className="flex flex-col gap-4 px-4 h-[calc(100vh-165px)] overflow-y-scroll">
+          <div className="flex flex-col gap-4 px-4 h-[calc(100vh-165px)] overflow-y-scroll no-scrollbar">
             {texts.map((text, index) => (
               <div key={index}>
                 <div
-                  className={`flex w-2/3 border border-gray-300 p-4 rounded-xl
+                  className={`flex w-2/3 border bg-white border-gray-300 p-4 rounded-xl
                   ${
                     index % 2 === 0
-                      ? "bg-gray-50 justify-start mr-auto"
-                      : " justify-end ml-auto"
+                      ? " justify-start mr-auto"
+                      : "bg-stone-200 justify-end ml-auto"
                   }  `}
                 >
                   <p>{text.content.body}</p>
@@ -717,24 +797,30 @@ const Chat = () => {
                     ) : (
                       <Check className="text-blue-400 w-5 h-5" />
                     )}
+                    <p className="text-gray-500 text-sm">
+                      {new Date(text.timestamp).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <form className="flex gap-2 py-2 ml-[15px] mr-[29px]">
+          <form className="flex gap-2 py-2 mx-4">
             <Input
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message here..."
-              className="w-full focus-visible:ring-0 border-gray-300 py-5 rounded-full shadow-none"
+              className="w-full focus-visible:ring-0 bg-white border-gray-300 py-5 rounded-full shadow-none"
             />
             <Button
               type="submit"
               variant="outline"
-              className="p-5 border-gray-300 rounded-full flex items-center justify-center"
+              className="py-5 border-gray-300 rounded-full flex items-center justify-center"
               onClick={handleSendMessage}
             >
               <Send className="text-gray-500" />
