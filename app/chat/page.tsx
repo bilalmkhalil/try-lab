@@ -2,12 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PrivateBroadcastMessage } from "@/types/types";
 import { Check, CheckCheckIcon, Search, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3001");
+const socket = io("http://localhost:4001");
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -186,7 +187,12 @@ const Chat = () => {
       content: {
         type: "text",
         body: "You can use useEffect to fetch data by calling your API inside the effect and updating state with the result.",
-        attachments: [],
+        attachments: [
+          {
+            type: "image",
+            url: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          },
+        ],
       },
       timestamp: "2024-01-10T10:31:00Z",
       status: "seen",
@@ -682,22 +688,26 @@ const Chat = () => {
     },
   ];
 
+  // const [texts, setTexts] = useState<PrivateBroadcastMessage[]>([]);
+
   useEffect(() => {
     // Listen for incoming messages
     socket.on("broadcast", (message) => {
       console.log("Received message:", message);
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          id: prevMessages.length + 1,
-          text: message.content,
-          sender: {
-            name: message.senderId,
-            profile: message.senderId,
-          },
-          timestamp: new Date(),
-        },
-      ]);
+      setTexts((prevTexts) => [...prevTexts, message]);
+
+      // setMessages((prevMessages) => [
+      //   ...prevMessages,
+      //   {
+      //     id: prevMessages.length + 1,
+      //     text: message.content,
+      //     sender: {
+      //       name: message.senderId,
+      //       profile: message.senderId,
+      //     },
+      //     timestamp: new Date(),
+      //   },
+      // ]);
     });
 
     // Cleanup on unmount
@@ -705,6 +715,8 @@ const Chat = () => {
     //   socket.off("broadcast");
     // };
   }, []);
+
+  // console.log(texts);
 
   const handleSendMessage = () => {
     if (message.trim() === "") return;
@@ -777,14 +789,28 @@ const Chat = () => {
             {texts.map((text, index) => (
               <div key={index}>
                 <div
-                  className={`flex w-2/3 border bg-white border-gray-300 p-4 rounded-xl
+                  className={`flex flex-col w-2/3 border bg-white border-gray-300 p-4 rounded-xl
                   ${
                     index % 2 === 0
                       ? " justify-start mr-auto"
                       : "bg-stone-200 justify-end ml-auto"
                   }  `}
                 >
-                  <p>{text.content.body}</p>
+                  <div>
+                    {text.content.attachments.length > 0 && (
+                      <div className="mb-2">
+                        {text.content.attachments.map((attachment, idx) => (
+                          <img
+                            key={idx}
+                            src={attachment.url}
+                            alt={`attachment-${idx}`}
+                            className="object-cover rounded-lg"
+                          />
+                        ))}
+                      </div>
+                    )}
+                    <p>{text.content.body}</p>
+                  </div>
                   <div
                     className={`${
                       index % 2 === 0 && "hidden"
@@ -798,7 +824,7 @@ const Chat = () => {
                       <Check className="text-blue-400 w-5 h-5" />
                     )}
                     <p className="text-gray-500 text-sm">
-                      {new Date(text.timestamp).toLocaleTimeString([], {
+                      {new Date(text?.timestamp).toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}

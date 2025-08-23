@@ -34,3 +34,32 @@ export interface AnimatedFormElementProps {
 export interface AnimatedFormErrorMessageProps {
   message?: string;
 }
+
+
+// ================= Chat Types =================
+export interface Content {
+  type: string;
+  body: string;
+  attachment?: string[];
+}
+
+export interface Reaction {
+  emoji: string;
+  count: number;
+  users: SenderRecieverUsers[];
+}
+
+export interface SenderRecieverUsers {
+  id: string;
+  name: string;
+}
+
+export interface PrivateBroadcastMessage {
+  id: string;
+  sender: SenderRecieverUsers[];
+  receiver: SenderRecieverUsers[];
+  content: Content;
+  reactions: Reaction[];
+  timestamp: Date;
+  status: string;
+}
