@@ -811,24 +811,47 @@ const Chat = () => {
                     )}
                     <p>{text.content.body}</p>
                   </div>
-                  <div
-                    className={`${
-                      index % 2 === 0 && "hidden"
-                    } flex items-end pl-0.5 justify-end`}
-                  >
-                    {text.status === "seen" ? (
-                      <CheckCheckIcon className="text-green-500 w-5 h-5" />
-                    ) : text.status === "delivered" ? (
-                      <CheckCheckIcon className="text-gray-400 w-5 h-5" />
-                    ) : (
-                      <Check className="text-blue-400 w-5 h-5" />
-                    )}
-                    <p className="text-gray-500 text-sm">
-                      {new Date(text?.timestamp).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </p>
+                  <div className="flex justify-between items-center mt-2">
+                    <div>
+                      {text.reactions.length > 0 && (
+                        <div className="flex gap-2">
+                          {text.reactions.map((reaction, idx) => (
+                            <div
+                              key={idx}
+                              className="border border-gray-200 bg-gray-100 px-2 py-1.5 rounded-full text-sm flex items-center gap-1"
+                            >
+                              <span>{reaction.emoji}</span>
+                              <span
+                                className={`${reaction.count < 2 && "hidden"}`}
+                              >
+                                {reaction.count}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div
+                      className={`${
+                        index % 2 === 0 && "hidden"
+                      } flex items-end pl-0.5`}
+                    >
+                      <p className="text-gray-500 mr-3 text-sm">
+                        {new Date(text?.timestamp).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
+
+                      {text.status === "seen" ? (
+                        <CheckCheckIcon className="text-green-500 w-5 h-5" />
+                      ) : text.status === "delivered" ? (
+                        <CheckCheckIcon className="text-gray-400 w-5 h-5" />
+                      ) : (
+                        <Check className="text-blue-400 w-5 h-5" />
+                      )}
+                      
+                    </div>
                   </div>
                 </div>
               </div>
