@@ -1,5 +1,10 @@
 "use client";
 
+import MessageBubble from "@/components/chat/MessageBubble";
+import MessageHeader from "@/components/chat/MessageHeader";
+import MessageInput from "@/components/chat/MessageInput";
+import UserAbout from "@/components/chat/UserAbout";
+import { ModeToggle } from "@/components/ThemeModeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PrivateBroadcastMessage } from "@/types/types";
@@ -8,7 +13,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:4001");
+// const socket = io("http://localhost:4001");
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -690,31 +695,30 @@ const Chat = () => {
 
   // const [texts, setTexts] = useState<PrivateBroadcastMessage[]>([]);
 
-  useEffect(() => {
-    // Listen for incoming messages
-    socket.on("broadcast", (message) => {
-      console.log("Received message:", message);
-      setTexts((prevTexts) => [...prevTexts, message]);
+  // useEffect(() => {
+  // Listen for incoming messages
+  // socket.on("broadcast", (message) => {
+  // console.log("Received message:", message);
+  // setTexts((prevTexts) => [...prevTexts, message]);
+  // setMessages((prevMessages) => [
+  //   ...prevMessages,
+  //   {
+  //     id: prevMessages.length + 1,
+  //     text: message.content,
+  //     sender: {
+  //       name: message.senderId,
+  //       profile: message.senderId,
+  //     },
+  //     timestamp: new Date(),
+  //   },
+  // ]);
+  // });
 
-      // setMessages((prevMessages) => [
-      //   ...prevMessages,
-      //   {
-      //     id: prevMessages.length + 1,
-      //     text: message.content,
-      //     sender: {
-      //       name: message.senderId,
-      //       profile: message.senderId,
-      //     },
-      //     timestamp: new Date(),
-      //   },
-      // ]);
-    });
-
-    // Cleanup on unmount
-    // return () => {
-    //   socket.off("broadcast");
-    // };
-  }, []);
+  // Cleanup on unmount
+  // return () => {
+  //   socket.off("broadcast");
+  // };
+  // }, []);
 
   // console.log(texts);
 
@@ -733,7 +737,22 @@ const Chat = () => {
     <div className="bg-gray-100 h-screen">
       <div className="grid grid-cols-4">
         <div className="col-span-1 flex h-screen flex-col">
-          <div className="border bg-white border-gray-300 px-4 py-6 my-4 flex items-center rounded-xl mx-4">
+          <div className="border bg-white border-gray-300 px-4 py-5 mt-4 flex items-center rounded-xl mx-4">
+            <div className="flex items-center gap-3 flex-1">
+              <img
+                src="https://api.dicebear.com/7.x/avataaars/svg?seed=CurrentUser"
+                alt="Current User"
+                className="w-10 h-10 rounded-full bg-gray-300"
+              />
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-900">You</h3>
+                <p className="text-sm text-gray-500">Online</p>
+              </div>
+            </div>
+            <ModeToggle />
+          </div>
+
+          <div className="border bg-white border-gray-300 px-4 py-2 my-4 flex items-center rounded-xl mx-4">
             <Search className=" text-gray-500" />
             <Input
               type="text"
@@ -775,106 +794,20 @@ const Chat = () => {
           </motion.div>
         </div>
 
-        <div className="col-span-3">
-          <div className="flex items-center gap-4 border bg-white border-gray-300 rounded-xl my-4 p-4 mx-4">
-            <img
-              src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
-              alt="john"
-              className="w-10 h-10 rounded-full bg-gray-300"
-            />
-            <p className="font-bold text-xl">John Doe</p>
-          </div>
+        <div className="col-span-2">
+          <MessageHeader />
 
-          <div className="flex flex-col gap-4 px-4 h-[calc(100vh-165px)] overflow-y-scroll no-scrollbar">
+          <div className="flex flex-col gap-4 px-4 h-[calc(100vh-175px)] overflow-y-scroll no-scrollbar">
             {texts.map((text, index) => (
-              <div key={index}>
-                <div
-                  className={`flex flex-col w-2/3 border bg-white border-gray-300 p-4 rounded-xl
-                  ${
-                    index % 2 === 0
-                      ? " justify-start mr-auto"
-                      : "bg-stone-200 justify-end ml-auto"
-                  }  `}
-                >
-                  <div>
-                    {text.content.attachments.length > 0 && (
-                      <div className="mb-2">
-                        {text.content.attachments.map((attachment, idx) => (
-                          <img
-                            key={idx}
-                            src={attachment.url}
-                            alt={`attachment-${idx}`}
-                            className="object-cover rounded-lg"
-                          />
-                        ))}
-                      </div>
-                    )}
-                    <p>{text.content.body}</p>
-                  </div>
-                  <div className="flex justify-between items-center mt-2">
-                    <div>
-                      {text.reactions.length > 0 && (
-                        <div className="flex gap-2">
-                          {text.reactions.map((reaction, idx) => (
-                            <div
-                              key={idx}
-                              className="border border-gray-200 bg-gray-100 px-2 py-1.5 rounded-full text-sm flex items-center gap-1"
-                            >
-                              <span>{reaction.emoji}</span>
-                              <span
-                                className={`${reaction.count < 2 && "hidden"}`}
-                              >
-                                {reaction.count}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                    <div
-                      className={`${
-                        index % 2 === 0 && "hidden"
-                      } flex items-end pl-0.5`}
-                    >
-                      <p className="text-gray-500 mr-3 text-sm">
-                        {new Date(text?.timestamp).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </p>
-
-                      {text.status === "seen" ? (
-                        <CheckCheckIcon className="text-green-500 w-5 h-5" />
-                      ) : text.status === "delivered" ? (
-                        <CheckCheckIcon className="text-gray-400 w-5 h-5" />
-                      ) : (
-                        <Check className="text-blue-400 w-5 h-5" />
-                      )}
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <MessageBubble key={index} message={text} index={index} />
             ))}
           </div>
 
-          <form className="flex gap-2 py-2 mx-4">
-            <Input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message here..."
-              className="w-full focus-visible:ring-0 bg-white border-gray-300 py-5 rounded-full shadow-none"
-            />
-            <Button
-              type="submit"
-              variant="outline"
-              className="py-5 border-gray-300 rounded-full flex items-center justify-center"
-              onClick={handleSendMessage}
-            >
-              <Send className="text-gray-500" />
-            </Button>
-          </form>
+          <MessageInput />
+        </div>
+
+        <div className="col-span-1">
+          <UserAbout />
         </div>
       </div>
     </div>

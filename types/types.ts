@@ -35,12 +35,11 @@ export interface AnimatedFormErrorMessageProps {
   message?: string;
 }
 
-
 // ================= Chat Types =================
 export interface Content {
   type: string;
   body: string;
-  attachment?: string[];
+  attachments?: string[];
 }
 
 export interface Reaction {
@@ -57,9 +56,29 @@ export interface SenderRecieverUsers {
 export interface PrivateBroadcastMessage {
   id: string;
   sender: SenderRecieverUsers[];
-  receiver: SenderRecieverUsers[];
+  receivers: SenderRecieverUsers[];
   content: Content;
   reactions: Reaction[];
   timestamp: Date;
   status: string;
+}
+
+// ------- Chat Functions Props Types -------
+export interface MessageBubbleProps {
+  message: PrivateBroadcastMessage;
+  index: number;
+}
+
+export interface renderMessageContentProps {
+  content: Content;
+}
+
+export interface renderMessageStatusProps {
+  timestamp: Date;
+  status: string;
+  index: number;
+}
+
+export interface renderMessageReactionsProps {
+  reactions: Reaction[];
 }
