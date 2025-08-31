@@ -60,7 +60,7 @@ const renderMessageReactions = ({ reactions }: renderMessageReactionsProps) => {
           {reactions?.map((reaction: Reaction, idx: number) => (
             <div
               key={idx}
-              className="border border-gray-200 bg-gray-100 px-2 py-1.5 rounded-full message-sm flex items-center gap-1"
+              className="border border-none bg-secondary px-2 py-1.5 rounded-full message-sm flex items-center gap-1"
             >
               <span>{reaction?.emoji}</span>
               <span className={`${reaction?.count < 2 && "hidden"}`}>
@@ -78,15 +78,17 @@ const MessageBubble = ({ message, index }: MessageBubbleProps) => {
   return (
     <div>
       <div
-        className={`flex flex-col w-2/3 border bg-white border-gray-300 p-4 rounded-xl
+        className={`flex flex-col w-2/3 border border-none px-1 pt-1 pb-1 rounded-xl
         ${
           index % 2 === 0
-            ? " justify-start mr-auto"
-            : "bg-stone-200 justify-end ml-auto"
+            ? "bg-primary justify-start mr-auto"
+            : "bg-primary justify-end ml-auto"
         }  `}
       >
-        {renderMessageContent({ content: message?.content })}
-        <div className="flex justify-between items-center mt-2">
+        <div className="bg-background p-4 rounded-xl">
+          {renderMessageContent({ content: message?.content })}
+        </div>
+        <div className="flex justify-between items-center m-2">
           {renderMessageReactions({ reactions: message?.reactions })}
           {renderMessageStatus({
             timestamp: message?.timestamp,

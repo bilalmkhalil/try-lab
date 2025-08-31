@@ -8,22 +8,22 @@ const MessageInput = () => {
       <Button
         type="button"
         variant="outline"
-        className="py-5 border-gray-300 rounded-xl flex items-center justify-center"
+        className="py-5 border-none bg-primary rounded-xl flex items-center justify-center"
       >
-        <Paperclip className="text-gray-500" />
+        <Paperclip className="text-accent" />
       </Button>
       <Input
         type="text"
         onChange={() => null}
         placeholder="Type your message here..."
-        className="w-full focus-visible:ring-0 bg-white border-gray-300 py-5 rounded-xl shadow-none"
+        className="w-full focus-visible:ring-0 bg-primary border-none py-5 rounded-xl shadow-none"
       />
       <Button
         type="submit"
         variant="outline"
-        className="py-5 border-gray-300 rounded-xl flex items-center justify-center"
+        className="py-5 border-none bg-primary rounded-xl flex items-center justify-center"
       >
-        <Send className="text-gray-500" />
+        <Send className="text-accent" />
       </Button>
     </form>
   );

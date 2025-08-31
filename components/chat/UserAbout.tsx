@@ -28,7 +28,7 @@ const UserAbout = () => {
   return (
     <div className="flex flex-col h-screen p-4 gap-4 overflow-y-auto no-scrollbar">
       {/* User Profile Card */}
-      <div className="border bg-white border-gray-300 rounded-xl p-6">
+      <div className="border bg-primary border-none rounded-xl p-6">
         <div className="flex flex-col items-center text-center">
           <img
             src={userInfo.profile}
@@ -47,13 +47,13 @@ const UserAbout = () => {
       </div>
 
       {/* Quick Actions */}
-      {/* <div className="border bg-white border-gray-300 rounded-xl p-4">
+      {/* <div className="border bg-primary border-none rounded-xl p-4">
         <h3 className="font-semibold mb-3">Quick Actions</h3>
         <div className="flex gap-2">
           <Button
             variant="outline"
             size="sm"
-            className="flex-1 border-gray-300 rounded-full"
+            className="flex-1 border-none rounded-full"
           >
             <Phone className="w-4 h-4 mr-2" />
             Call
@@ -61,7 +61,7 @@ const UserAbout = () => {
           <Button
             variant="outline"
             size="sm"
-            className="flex-1 border-gray-300 rounded-full"
+            className="flex-1 border-none rounded-full"
           >
             <Video className="w-4 h-4 mr-2" />
             Video
@@ -70,46 +70,46 @@ const UserAbout = () => {
       </div> */}
 
       {/* Contact Information */}
-      <div className="border bg-white border-gray-300 rounded-xl p-4">
+      <div className="border bg-primary border-none rounded-xl p-4">
         <h3 className="font-semibold mb-3">Contact Info</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <Mail className="w-4 h-4 text-gray-500" />
+            <Mail className="w-4 h-4 text-accent" />
             <span className="text-sm text-gray-700">{userInfo.email}</span>
           </div>
           <div className="flex items-center gap-3">
-            <Phone className="w-4 h-4 text-gray-500" />
+            <Phone className="w-4 h-4 text-accent" />
             <span className="text-sm text-gray-700">{userInfo.phone}</span>
           </div>
           <div className="flex items-center gap-3">
-            <MapPin className="w-4 h-4 text-gray-500" />
+            <MapPin className="w-4 h-4 text-accent" />
             <span className="text-sm text-gray-700">{userInfo.location}</span>
           </div>
         </div>
       </div>
 
       {/* Activity Information */}
-      <div className="border bg-white border-gray-300 rounded-xl p-4">
+      <div className="border bg-primary border-none rounded-xl p-4">
         <h3 className="font-semibold mb-3">Activity</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <Calendar className="w-4 h-4 text-gray-500" />
+            <Calendar className="w-4 h-4 text-accent" />
             <div className="flex-1">
-              <span className="text-sm text-gray-500">Joined</span>
+              <span className="text-sm text-accent">Joined</span>
               <p className="text-sm font-medium">{userInfo.joinDate}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Clock className="w-4 h-4 text-gray-500" />
+            <Clock className="w-4 h-4 text-accent" />
             <div className="flex-1">
-              <span className="text-sm text-gray-500">Last seen</span>
+              <span className="text-sm text-accent">Last seen</span>
               <p className="text-sm font-medium">{userInfo.lastSeen}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <MessageCircle className="w-4 h-4 text-gray-500" />
+            <MessageCircle className="w-4 h-4 text-accent" />
             <div className="flex-1">
-              <span className="text-sm text-gray-500">Total chats</span>
+              <span className="text-sm text-accent">Total chats</span>
               <p className="text-sm font-medium">{userInfo.totalChats}</p>
             </div>
           </div>
