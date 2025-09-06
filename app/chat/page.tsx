@@ -725,10 +725,10 @@ const Chat = () => {
   const handleSendMessage = () => {
     if (message.trim() === "") return;
 
-    socket.emit("message", {
-      content: message,
-      senderId: "John Doe",
-    });
+    // socket.emit("message", {
+    //   content: message,
+    //   senderId: "John Doe",
+    // });
 
     setMessage("");
   };  
@@ -737,7 +737,7 @@ const Chat = () => {
     <div className="bg-background h-screen">
       <div className="grid grid-cols-4">
         <div className="col-span-1 flex h-screen flex-col">
-          <div className="border bg-primary border-none px-4 py-5 mt-4 flex items-center rounded-xl mx-4">
+          <div className="border bg-primary border-border dark:border-none px-4 py-5 mt-4 flex items-center rounded-xl mx-4">
             <div className="flex items-center gap-3 flex-1">
               <img
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=CurrentUser"
@@ -752,7 +752,7 @@ const Chat = () => {
             <ModeToggle />
           </div>
 
-          <div className="border bg-primary border-none px-4 py-2 my-4 flex items-center rounded-xl mx-4">
+          <div className="border bg-primary border-border dark:border-none px-4 py-2 my-4 flex items-center rounded-xl mx-4">
             <Search className=" text-gray-500" />
             <Input
               type="text"
@@ -765,7 +765,7 @@ const Chat = () => {
             {messages.map((message, index) => (
               <motion.div
                 key={index}
-                className="border border-none px-4 py-2 bg-primary  cursor-pointer rounded-xl"
+                className="border border-border dark:border-none px-4 py-2 bg-primary  cursor-pointer rounded-xl"
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}

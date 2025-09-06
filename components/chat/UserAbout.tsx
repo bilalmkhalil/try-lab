@@ -28,7 +28,7 @@ const UserAbout = () => {
   return (
     <div className="flex flex-col h-screen p-4 gap-4 overflow-y-auto no-scrollbar">
       {/* User Profile Card */}
-      <div className="border bg-primary border-none rounded-xl p-6">
+      <div className="border bg-primary border-border dark:border-none rounded-xl p-6">
         <div className="flex flex-col items-center text-center">
           <img
             src={userInfo.profile}
@@ -70,7 +70,7 @@ const UserAbout = () => {
       </div> */}
 
       {/* Contact Information */}
-      <div className="border bg-primary border-none rounded-xl p-4">
+      <div className="border bg-primary border-border dark:border-none rounded-xl p-4">
         <h3 className="font-semibold mb-3">Contact Info</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3">
@@ -89,7 +89,7 @@ const UserAbout = () => {
       </div>
 
       {/* Activity Information */}
-      <div className="border bg-primary border-none rounded-xl p-4">
+      <div className="border bg-primary border-border dark:border-none rounded-xl p-4">
         <h3 className="font-semibold mb-3">Activity</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3">

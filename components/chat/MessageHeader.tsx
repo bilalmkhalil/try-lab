@@ -2,7 +2,7 @@ import { CircleAlert } from "lucide-react";
 
 const MessageHeader = () => {
   return (
-    <div className="flex items-center gap-4 border bg-primary border-none rounded-xl my-4 p-4 mx-4">
+    <div className="flex items-center gap-4 border bg-primary border-border dark:border-none rounded-xl my-4 p-4 mx-4">
       <img
         src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
         alt="john"
