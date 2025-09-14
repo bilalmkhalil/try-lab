@@ -113,7 +113,7 @@ export default function SolarPage() {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${activeTheme.bgGradient} ${activeTheme.textColor} p-4 md:p-6 relative overflow-hidden`}>
+    <div className={`min-h-screen bg-linear-to-br ${activeTheme.bgGradient} ${activeTheme.textColor} p-4 md:p-6 relative overflow-hidden`}>
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-[#28AFB0]/20 rounded-full blur-3xl"></div>
@@ -132,11 +132,11 @@ export default function SolarPage() {
             <h1 className="text-3xl md:text-5xl font-black tracking-tight relative z-10 pl-2 font-mono">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
                 <div className="relative">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] inline-block">
+                  <span className="bg-clip-text text-transparent bg-linear-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] inline-block">
                     SOLAR·SYNC
                   </span>
                   <motion.span
-                    className="absolute -bottom-1 left-0 right-0 h-1.5 bg-gradient-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-1.5 bg-linear-to-r from-[#28AFB0] via-[#99C1B9] to-[#E3B23C] rounded-full"
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ delay: 0.5, duration: 0.8 }}
@@ -159,7 +159,7 @@ export default function SolarPage() {
                 <span className="text-sm md:text-lg uppercase tracking-widest opacity-75 font-light mt-0.5">Dashboard</span>
               </div>
             </h1>
-            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-[#28AFB0] to-[#99C1B9] blur-xl opacity-30 z-0"></div>
+            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-linear-to-r from-[#28AFB0] to-[#99C1B9] blur-xl opacity-30 z-0"></div>
           </motion.div>
           
           <div className="flex gap-2">
@@ -184,7 +184,7 @@ export default function SolarPage() {
         <div className="grid grid-cols-12 gap-3 h-[calc(100vh-7rem)]">
           {/* Main Solar Panel Card - Adjusted chart height */}
           <motion.div 
-            className={`col-span-6 row-span-3 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#E3B23C]/30 transition-all shadow-lg overflow-hidden flex flex-col`}
+            className={`col-span-6 row-span-3 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#E3B23C]/30 transition-all shadow-lg overflow-hidden flex flex-col`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.005 }}
@@ -195,7 +195,7 @@ export default function SolarPage() {
               </div>
               <h2 className="text-lg font-semibold">Solar Generation</h2>
             </div>
-            <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#E3B23C] to-[#E3B23C]/70 mb-2">
+            <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#E3B23C] to-[#E3B23C]/70 mb-2">
               {systemStatus.solarGeneration.toFixed(1)} <span className="text-xl text-[#DDCECD]/50">kW</span>
             </div>
             
@@ -205,15 +205,15 @@ export default function SolarPage() {
             </div>
             
             {/* Chart container with theme-based colors */}
-            <div className="flex-grow flex flex-col mt-1">
-              <div className="flex-grow flex items-end">
+            <div className="grow flex flex-col mt-1">
+              <div className="grow flex items-end">
                 <div className="w-full h-full flex items-end justify-between gap-0.5">
                   {[...Array(24)].map((_, i) => {
                     const height = Math.max(10, Math.random() * 100);
                     return (
                       <motion.div 
                         key={i}
-                        className={`bg-gradient-to-t ${activeTheme.chartColor} rounded-t-sm`}
+                        className={`bg-linear-to-t ${activeTheme.chartColor} rounded-t-sm`}
                         style={{ height: `${height}%`, width: '6px' }}
                         initial={{ height: 0 }}
                         animate={{ height: `${height}%` }}
@@ -233,7 +233,7 @@ export default function SolarPage() {
 
           {/* Battery Status */}
           <motion.div 
-            className={`col-span-3 row-span-2 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#99C1B9]/30 transition-all shadow-lg`}
+            className={`col-span-3 row-span-2 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#99C1B9]/30 transition-all shadow-lg`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -247,7 +247,7 @@ export default function SolarPage() {
             
             <div className="w-full h-3 bg-[#423E37]/30 rounded-full overflow-hidden">
               <motion.div 
-                className={`h-full bg-gradient-to-r ${activeTheme.progressBg}`}
+                className={`h-full bg-linear-to-r ${activeTheme.progressBg}`}
                 initial={{ width: '0%' }}
                 animate={{ width: `${systemStatus.batteryLevel}%` }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -262,7 +262,7 @@ export default function SolarPage() {
 
           {/* Home Consumption */}
           <motion.div 
-            className={`col-span-3 row-span-2 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#28AFB0]/30 transition-all shadow-lg`}
+            className={`col-span-3 row-span-2 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#28AFB0]/30 transition-all shadow-lg`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
@@ -286,7 +286,7 @@ export default function SolarPage() {
 
           {/* Grid Feed */}
           <motion.div 
-            className={`col-span-3 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#3B7080]/30 transition-all shadow-lg`}
+            className={`col-span-3 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#3B7080]/30 transition-all shadow-lg`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -310,7 +310,7 @@ export default function SolarPage() {
 
           {/* Weather */}
           <motion.div 
-            className={`col-span-3 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#E3B23C]/30 transition-all shadow-lg`}
+            className={`col-span-3 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#E3B23C]/30 transition-all shadow-lg`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
@@ -335,7 +335,7 @@ export default function SolarPage() {
 
           {/* System Status - Improved spacing */}
           <motion.div 
-            className={`col-span-6 row-span-1 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#28AFB0]/30 transition-all shadow-lg`}
+            className={`col-span-6 row-span-1 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#28AFB0]/30 transition-all shadow-lg`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -357,7 +357,7 @@ export default function SolarPage() {
               {/* Left side - component status with better spacing */}
               <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <PanelTop className="w-3.5 h-3.5 text-yellow-400" />
                   </div>
                   <span className={activeTheme.mutedText}>Panels</span>
@@ -367,7 +367,7 @@ export default function SolarPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <Power className="w-3.5 h-3.5 text-purple-400" />
                   </div>
                   <span className={activeTheme.mutedText}>Inverter</span>
@@ -377,7 +377,7 @@ export default function SolarPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <BatteryCharging className="w-3.5 h-3.5 text-green-400" />
                   </div>
                   <span className={activeTheme.mutedText}>Battery</span>
@@ -387,7 +387,7 @@ export default function SolarPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <PlugZap className="w-3.5 h-3.5 text-blue-400" />
                   </div>
                   <span className={activeTheme.mutedText}>Grid</span>
@@ -425,7 +425,7 @@ export default function SolarPage() {
 
           {/* Time */}
           <motion.div 
-            className={`col-span-3 col-start-10 row-start-3 bg-gradient-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#19647E]/30 transition-all shadow-lg`}
+            className={`col-span-3 col-start-10 row-start-3 bg-linear-to-br ${activeTheme.cardBg} rounded-2xl p-4 backdrop-blur-lg border border-[#DDCECD]/10 hover:border-[#19647E]/30 transition-all shadow-lg`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}

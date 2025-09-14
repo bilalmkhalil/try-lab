@@ -17,11 +17,11 @@ const inter = Inter({
 
 export default function Home() {
   return (
-    <main className={`min-h-screen bg-gradient-to-br from-black to-zinc-900 text-white ${outfit.variable} ${inter.variable} font-sans`}>
+    <main className={`min-h-screen bg-linear-to-br from-black to-zinc-900 text-white ${outfit.variable} ${inter.variable} font-sans`}>
       {/* Hero Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <h1 className={`text-5xl md:text-6xl font-outfit font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400`}>
+          <h1 className={`text-5xl md:text-6xl font-outfit font-extrabold mb-4 bg-clip-text text-transparent bg-linear-to-r from-white to-gray-400`}>
             TryLab Sandbox
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto font-inter font-light">
